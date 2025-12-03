@@ -366,7 +366,7 @@ if (isset($_POST['host'])) {
 										<thead>
 											<th>Name</th>
 											<th>key</th>
-											<th>Delay</th>
+											<th>Interval</th>
 											<th>History</th>
 											<th>Trends</th>
 											<th>Description</th>

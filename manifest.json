@@ -10,7 +10,7 @@
     "actions": {
         "gethostro.view": {
             "class": "GetHostROView",
-            "view": "module.gethostro.view"
+            "view": "viewhost"
         }
     }
 }

@@ -125,8 +125,8 @@ summary h2 {
 }
 
 </style>
-<link href="./modules/get-host-ro/views/datatables/css/jquery.dataTables.css" rel="stylesheet"/>
-<script src="./modules/get-host-ro/views/datatables/js/jquery.dataTables.js"></script>
+<link href="./modules/get-host-ro/views/includes/css/jquery.dataTables.css" rel="stylesheet"/>
+<script src="./modules/get-host-ro/views/includes/js/jquery.dataTables.js"></script>
 <script>$(document).ready(function() {$('#macros').dataTable({paging: false})});</script>
 <script>$(document).ready(function() {$('#inventory').dataTable({paging: false})});</script>
 <script>$(document).ready(function() {$('#items').dataTable({paging: false})});</script>

@@ -124,7 +124,7 @@ summary h2 {
   padding:8px;*/
 }
 
-.page-title-general {
+#page-title-general {
     text-align: center;
     margin: -15px;
     position: absolute;

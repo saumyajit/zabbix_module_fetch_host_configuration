@@ -23,28 +23,28 @@ static $map_maintenance_status  = array(
         1 => 'maintenance in effect <a class="icon-maintenance"></a>'
 );
 static $map_item_status  = array(
-        0 => '<span class="green">enable</span>',
-        1 => '<span class="red">disabled</span>'
+        0 => '<span class="green">Enabled</span>',
+        1 => '<span class="red">Disabled</span>'
 );
 static $map_item_state  = array(
-        0 => '<span class="green">normal</span>',
-        1 => '<span class="red">not supported</span>'
+        0 => '<span class="green">Normal</span>',
+        1 => '<span class="red">Not Supported</span>'
 );
 static $map_trigger_status  = array(
-        0 => '<span class="green">enable</span>',
-        1 => '<span class="red">disabled</span>'
+        0 => '<span class="green">Enabled</span>',
+        1 => '<span class="red">Disabled</span>'
 );
 static $map_trigger_state  = array(
-        0 => '<span class="green">normal</span>',
-        1 => '<span class="red">not supported</span>'
+        0 => '<span class="green">Normal</span>',
+        1 => '<span class="red">Not Supported</span>'
 );
 static $map_trigger_priority  = array(
         0 => 'Not classified',
         1 => 'Information',
-        2 => 'Warning',
-        3 => 'Average',
+        2 => 'Low',
+        3 => 'Medium',
         4 => 'High',
-        5 => 'Disaster'
+        5 => 'Critical'
 );
 
 function build_table($array){
@@ -124,6 +124,14 @@ summary h2 {
   padding:8px;*/
 }
 
+.page-title-general {
+    text-align: center;
+    margin: -15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 </style>
 <link href="./modules/get-host-ro/views/includes/css/jquery.dataTables.css" rel="stylesheet"/>
 <script src="./modules/get-host-ro/views/includes/js/jquery.dataTables.js"></script>
@@ -137,9 +145,7 @@ summary h2 {
 		<button type="button" id="sidebar-button-toggle" class="button-toggle" title="Show sidebar">Show sidebar</button>
 	</nav>
 	<div>
-		<h1 id="page-title-general" style="text-align: center; margin: -15px; position: absolute; left: 50%; transform: translateX(-50%);">
-                    View Host Configurations
-        </h1>
+		<h1 id="page-title-general" >View Host Configurations</h1>
 	</div>
 </header>
 <main>

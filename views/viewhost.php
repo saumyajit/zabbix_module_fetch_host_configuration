@@ -255,7 +255,6 @@ if (isset($_POST['host'])) {
                         Download JSON
                     </button>
                 </div>
-		//...........
 <?php
 		$itemsInfo= api::item()->get(array(
 			'hostids' => array($hostInfo[0]['hostid']),

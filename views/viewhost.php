@@ -140,6 +140,28 @@ summary h2 {
 <script>$(document).ready(function() {$('#items').dataTable({paging: false})});</script>
 <script>$(document).ready(function() {$('#triggers').dataTable({paging: false})});</script>
 
+// Export function
+<script>
+function downloadHostConfig(format) {
+    var hostField = document.getElementById('exportHostId');
+    if (!hostField || !hostField.value) {
+        alert('Select a host first.');
+        return;
+    }
+
+    var hostid = encodeURIComponent(hostField.value);
+
+    // Use the same front controller as the page itself
+    var base = 'zabbix.php';
+
+    window.location.href =
+        base + '?action=gethostro.view'
+        + '&export=' + encodeURIComponent(format)
+        + '&hostid=' + hostid;
+}
+</script>
+//.....................
+
 <header class="header-title">
 	<nav class="sidebar-nav-toggle" role="navigation" aria-label="Sidebar control">
 		<button type="button" id="sidebar-button-toggle" class="button-toggle" title="Show sidebar">Show sidebar</button>
@@ -220,6 +242,22 @@ if (isset($_POST['host'])) {
 			));
 		}
 
+		// Host found, expose hostid for export buttons.
+        $hostid = $hostInfo[0]['hostid'];
+                ?>
+                <div style="margin:10px 0;">
+                    <input type="hidden" id="exportHostId" value="<?php echo htmlspecialchars($hostid); ?>">
+                    <button type="button" onclick="downloadHostConfig('csv')">
+                        Download CSV
+                    </button>
+                    <button type="button" onclick="downloadHostConfig('html')">
+                        Download HTML
+                    </button>
+                    <button type="button" onclick="downloadHostConfig('json')">
+                        Download JSON
+                    </button>
+                </div>
+		//...........
 		$itemsInfo= api::item()->get(array(
 			'hostids' => array($hostInfo[0]['hostid']),
 			'webitems' => 1,

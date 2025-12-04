@@ -52,11 +52,14 @@ class GetHostROView extends CAction {
             ]);
 
             // Items.
-            $itemsInfo = API::Item()->get([
-                'hostids'   => $hostid,
-                'output'    => ['itemid', 'name', 'key_', 'delay', 'history', 'trends', 'status', 'state', 'description'],
-                'sortfield' => 'name'
-            ]);
+			$itemsInfo = API::Item()->get([
+				'hostids'   => $hostid,
+				'webitems'  => 1,   // include web scenario items like in your viewhost.php
+				'templated' => null,
+				'preservekeys' => 0,
+				'output'    => ['itemid', 'name', 'key_', 'delay', 'history', 'trends', 'status', 'state', 'description'],
+				'sortfield' => 'name'
+			]);
 
             // Triggers with expanded expression.
             $triggers = API::Trigger()->get([

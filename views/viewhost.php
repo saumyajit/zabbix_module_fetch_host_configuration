@@ -174,32 +174,42 @@ function downloadHostConfig(format) {
 			<div id="maintenanceTab" aria-labelledby="tab_maintenanceTab" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="true" aria-hidden="false">
 				<ul class="table-forms" id="maintenanceFormList">
 					<li>
-						<div class="table-forms-td-left">
-							<label class="form-label-asterisk" for="host">Host </label>
-						</div>
-						<div class="table-forms-td-right">
+					<style>
+						.host-search-wrapper {
+							display: flex;
+							justify-content: center;   /* center horizontally */
+							align-items: center;
+							gap: 8px;
+						}
+						</style>
+						<div class="host-search-wrapper">
+							<label class="form-label-asterisk" for="host">Host</label>
+					
 							<input list="host" type="text" name="host" size="50" autocomplete="off">
+					
 							<datalist id="host">
-<?php
-$hosts = api::host()->get(array(
-                             	'output' => array('host','name'),
-                                ));
-$arr_hosts=array();
-
-foreach($hosts as $onehost){
-	array_push($arr_hosts,$onehost['host']);
-        if (!empty($onehost['name'])) array_push($arr_hosts,$onehost['name']);
-}
-//var_dump($hosts);
-$arr_hosts=array_unique($arr_hosts);
-sort($arr_hosts);
-
-foreach($arr_hosts as $name){
-                ?>							<option value="<?php echo $name; ?>"><?php echo $name; ?></option><?php
-        }
-?>
+					<?php
+					$hosts = api::host()->get(array(
+						'output' => array('host','name'),
+					));
+					$arr_hosts = array();
+					
+					foreach ($hosts as $onehost) {
+						$arr_hosts[] = $onehost['host'];
+						if (!empty($onehost['name'])) {
+							$arr_hosts[] = $onehost['name'];
+						}
+					}
+					$arr_hosts = array_unique($arr_hosts);
+					sort($arr_hosts);
+					
+					foreach ($arr_hosts as $name) {
+					?>
+								<option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+					<?php } ?>
 							</datalist>
-							<button type="submit" value="Search"/>Search Host</button>
+					
+							<button type="submit" value="Search">Search Host</button>
 						</div>
 					</li>
 				</ul>

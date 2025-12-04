@@ -228,7 +228,7 @@ if (isset($_POST['host'])) {
 		$hostInfo = api::host()->get(array(
 			'filter' => array('hostid' => $host[0]['hostid']),
 			//'searchbyany' => 1,
-			'output' => array('hostid','host','name','status','description','proxy_hostid','tls_connect','tls_accept','tls_issuer','tls_subject','flags','inventory_mode','maintenance_status'),
+			'output' => array('hostid','host','name','status','description','proxyid','tls_connect','tls_accept','tls_issuer','tls_subject','flags','inventory_mode','maintenance_status'),
 			'selectDiscoveryRule' => array('itemid','name','parent_hostid'),
 			'selectHostGroups' => array('groupid','name'),
 			'selectHostDiscovery' => array('parent_hostid','host'),
@@ -240,12 +240,18 @@ if (isset($_POST['host'])) {
 			'selectTags' => array('tag','value','automatic')
 		));
 		
-		if (isset($hostInfo[0]['proxy_hostid'])){
-			$proxyInfo= api::proxy()->get(array(
-				'proxyids' => $hostInfo[0]['proxy_hostid'],
-				'output' => array('host')
-			));
-		}
+        $proxy_names = [];
+
+        if (!empty($hostInfo[0]['proxyid']) && $hostInfo[0]['proxyid'] != '0') {
+            $proxyInfo = api::proxy()->get(array(
+                'proxyids' => array($hostInfo[0]['proxyid']),
+                'output'   => array('name')
+            ));
+
+            foreach ($proxyInfo as $p) {
+                $proxy_names[] = $p['name'];
+            }
+        }
 
 		// Host found, expose hostid for export buttons.
         $hostid = $hostInfo[0]['hostid'];
@@ -315,7 +321,7 @@ if (isset($_POST['host'])) {
 
 										<tr>
 											<th>Proxy</th>
-											<td><?php echo isset($proxyInfo[0]['host']) ? $proxyInfo[0]['host'] : "No Proxy";?></td>
+											<td><?php echo !empty($proxy_names) ? htmlspecialchars(implode(', ', $proxy_names)) : 'No Proxy'; ?></td>
 										</tr>
 										<tr>
 											<th>Description</th>

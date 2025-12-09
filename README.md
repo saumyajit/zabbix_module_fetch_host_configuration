@@ -132,3 +132,28 @@ Feel free to open an issue or submit a pull request.
 🙌 Acknowledgments
 
 Thanks to the Zabbix community for official module development guidelines and inspiration.
+
+---
+
+## 🗺️ Roadmap
+
+This module is actively being improved. Below is the planned development roadmap:
+
+### **📌 Current Version**
+- Fetch configuration for a single host  
+- Export in CSV, HTML, and JSON formats  
+
+### **🚧 In Development**
+- UI enhancements and performance improvements
+
+### **🔮 Upcoming Features**
+- **Fetch configuration for multiple selected hosts**  
+  Export configuration for several hosts at once in your preferred format.
+
+- **Fetch configuration for entire host groups**  
+  Select a host group and retrieve/export all configurations inside that group.
+
+- **Bulk export options**  
+  One-click export for “All hosts” across the entire environment.
+
+---

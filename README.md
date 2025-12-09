@@ -44,3 +44,91 @@ This makes it useful for audits, compliance checks, debugging, and migration.
 1. **Clone or download** this repository:
    ```bash
    git clone https://github.com/saumyajit/zabbix_module_fetch_host_configuration
+   
+2. **Copy the module folder into your Zabbix frontend modules directory.**  
+   For most installations this is:
+
+   - `/usr/share/zabbix/modules/`  
+   - or `/usr/share/zabbix/modules/ui/`  
+
+   After copying, the module should look like:
+
+   - `/usr/share/zabbix/modules/zabbix_module_fetch_host_configuration/`  
+   - or `/usr/share/zabbix/modules/ui/zabbix_module_fetch_host_configuration/`
+
+3. **Ensure correct file permissions for the Zabbix web user:**
+
+   **RHEL / CentOS:**  
+   - `chown -R apache:apache /usr/share/zabbix/modules/zabbix_module_fetch_host_configuration`
+
+   **Debian / Ubuntu:**  
+   - `chown -R www-data:www-data /usr/share/zabbix/modules/zabbix_module_fetch_host_configuration`
+
+4. **Log into the Zabbix web interface as an administrator.**
+
+5. Navigate to:  
+**Administration → Modules**
+
+6. Click **Scan directory**.
+
+7. Locate the module and click **Enable**.
+
+---
+
+## 🖥️ Usage
+
+Once enabled:
+
+1. A new menu entry will appear in the Zabbix UI:  
+**Fetch Host Configuration**
+
+2. Select a host or choose to fetch all hosts.
+
+3. Choose an export option:
+- **Download CSV**
+- **Download HTML**
+- **Download JSON**
+
+4. Save or open the exported host configuration file.
+
+---
+
+## 📚 Use Cases
+
+- 🔍 **Audits & Compliance Reporting**  
+- 🗄️ **Backup of host configuration**  
+- 🔄 **Migrating hosts between Zabbix environments**  
+- 📑 **Generating documentation**  
+- 🧰 **Debugging configuration issues**  
+- ⚙️ **DevOps automation using JSON exports**
+
+---
+
+## 🛠 Compatibility
+
+The module is designed for Zabbix frontend versions:
+
+- **Zabbix 5.x**
+- **Zabbix 6.x**
+- **Zabbix 7.x**
+
+(Other versions may work but are untested.)
+
+---
+
+## 📄 License
+
+This project is licensed under the **GNU GPL v3.0**.  
+See the `LICENSE` file for details.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to open an issue or submit a pull request.
+
+
+🙌 Acknowledgments
+
+Thanks to the Zabbix community for official module development guidelines and inspiration.

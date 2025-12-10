@@ -136,7 +136,13 @@ summary h2 {
 	justify-content: center;   /* center horizontally */
 	align-items: center;
 	gap: 8px;
-							
+.icon-maintenance::before {
+    content: "\26A0";
+    margin-right: 4px;
+    font-weight: bold;
+    color: inherit;
+}
+
 </style>
 <link href="./modules/get-host-ro/views/includes/css/jquery.dataTables.css" rel="stylesheet"/>
 <script src="./modules/get-host-ro/views/includes/js/jquery.dataTables.js"></script>

@@ -108,12 +108,11 @@ Once enabled:
 
 The module is designed for Zabbix frontend versions:
 
-- **Zabbix 5.x**
-- **Zabbix 6.x**
 - **Zabbix 7.x**
 
-(Other versions may work but are untested.)
-
+(You need to modify API methods to make this work for below versions)
+- **Zabbix 5.x**
+- **Zabbix 6.x**
 ---
 
 ## 📄 License

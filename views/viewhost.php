@@ -339,7 +339,7 @@ if (isset($_POST['host'])) {
 											<th>Maintenance Status</th>
 											<td><?php echo $map_maintenance_status[$hostInfo[0]['maintenance_status']];?></td>
 										</tr>
-										<<tr>
+										<tr>
 											<th>Proxy</th>
 											<td><?php echo !empty($proxy_names) ? htmlspecialchars(implode(', ', $proxy_names)) : 'N/A (Monitored by either Proxy Group or Server)'; ?></td>
 										</tr>

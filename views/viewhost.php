@@ -20,7 +20,7 @@ static $map_status = array(
 );
 static $map_maintenance_status  = array(
         0 => '<span class="green">Not Under Maintenance</span>',
-        1 => '<span class="red">Under Maintenance <a class="icon-maintenance"></a></span>'
+        1 => '<span class="red"><span class="icon-maintenance"></span> Under Maintenance</span>'
 );
 static $map_item_status  = array(
         0 => '<span class="green">Enabled</span>',
@@ -138,12 +138,12 @@ summary h2 {
 	gap: 8px;
 }
 .icon-maintenance::before {
-    content: "\1F527"; /* 🔧 wrench */
-    margin-right: 4px;
-    font-weight: normal;
-    color: inherit;
-    font-size: 20px; /* increase this value to make it larger */
-    vertical-align: middle; /* aligns icon nicely with text */
+    content: "\26A0";        /* ⚠ symbol */
+    margin-right: 6px;       /* space before text */
+    font-weight: bold;
+    color: #d4af37;          /* deep yellow / Zabbix-like */
+    font-size: 18px;         /* adjust size as needed */
+    vertical-align: middle;  /* align with text */
 }
 
 </style>

@@ -517,7 +517,7 @@ echo build_table($inventory_formatted);
 											<th>Description</th>
 											<th>Status</th>
 											<th>State</th>
-											<th>Count of Triggers Associated</th>
+											<th>Triggers Count</th>
 										</thead>
 										<tbody>
 <?php foreach($itemsInfo as $itemInfo){ ?>

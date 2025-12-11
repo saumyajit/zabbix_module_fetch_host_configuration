@@ -61,112 +61,119 @@ function build_table($array){
 ?>
 
 <style>
+/* General Table Styling */
 table {
   border-collapse: collapse;
   width: 100%;
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
 }
 
 th, td {
   text-align: left;
   padding: 8px;
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
 }
-table td + td {
-/*  border-right: solid 1px ; */
-  border-left: solid 1px;
-  border-style: dotted;
-}
+
+table td + td,
 table th + td {
-/*  border-right: solid 1px ; */
   border-left: solid 1px;
   border-style: dotted;
 }
 
 thead {
- border-bottom: solid 1px;
- border-style: dotted;
+  border-bottom: solid 1px;
+  border-style: dotted;
 }
 
 tr { border: none; }
-
 tr:nth-child(even) { background-color: #f4f7fb; }
 
-summary h2 {
+/* Summary H2 / Section Headers */
+summary h2,
+h2 {
   display: inline-block;
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
 }
-.tooltip
-{
+
+/* Tooltips */
+.tooltip {
   text-decoration:none;
   position:relative;
 }
 
-
-.tooltip span
-{
+.tooltip span {
   display:none;
-  /*color:black;
-  background:white;*/
 }
 
-.tooltip:hover span
-{
+.tooltip:hover span {
   display:block;
   position:absolute;
   top:0;
- left:-75%;
+  left:-75%;
   z-index:1000;
   width:auto;
-/*  max-width:320px;
-  min-height:128px;
-  border:1px solid black;
-  margin-top:12px;
-  margin-left:32px;
-  overflow:hidden;
-  padding:8px;*/
 }
 
+/* Page Title */
 #page-title-general {
-    text-align: center;
-    margin: -15px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+  text-align: center;
+  margin: -15px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
 }
+
+/* Host Search Wrapper */
 .host-search-wrapper {
-	display: flex;
-	justify-content: center;   /* center horizontally */
-	align-items: center;
-	gap: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
+
+/* Maintenance Icon */
 .icon-maintenance::before {
-    content: "\26A0";        /* ⚠ symbol */
-    margin-right: 6px;       /* space before text */
-    font-weight: bold;
-    color: #d4af37;          /* deep yellow / Zabbix-like */
-    font-size: 18px;         /* adjust size as needed */
-    vertical-align: middle;  /* align with text */
+  content: "\26A0";        /* ⚠ symbol */
+  margin-right: 6px;
+  font-weight: bold;
+  color: #d4af37;          /* deep yellow / Zabbix-like */
+  font-size: 18px;
+  vertical-align: middle;
 }
+
+/* Items and Triggers Table Header */
 #items thead th,
 #triggers thead th {
-    background-color: #e9eff6;
-    color: #1a1a1a;
-    font-weight: 600;
-    font-size: 14px;
-    font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
-    border-bottom: 2px solid #d0d7e1;
-    letter-spacing: 0.3px;
+  background-color: #e9eff6;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+  border-bottom: 2px solid #d0d7e1;
+  letter-spacing: 0.3px;
 }
-table th,
-table td {
-    font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
-}
+
+/* Macros Table Header */
 #macros thead th {
-    background-color: #e9eff6;       /* Light blue */
-    color: #1a1a1a;                   /* Near-black text */
-    font-weight: 600;
-    font-size: 14px;
-    font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
-    border-bottom: 2px solid #d0d7e1; /* Slightly darker separator */
-    letter-spacing: 0.3px;
+  background-color: #e9eff6;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+  border-bottom: 2px solid #d0d7e1;
+  letter-spacing: 0.3px;
+}
+
+/* Inventory Table Header */
+#inventory thead th {
+  background-color: #e9eff6;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+  border-bottom: 2px solid #d0d7e1;
+  letter-spacing: 0.3px;
 }
 
 </style>

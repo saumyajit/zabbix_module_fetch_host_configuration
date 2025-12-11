@@ -452,7 +452,7 @@ if (isset($_POST['host'])) {
                                                                 </details>
                                                         </div>
 							<div style="flex: 1; padding-left: 1em;">
-								<details>
+								<details open="true">
 									<summary><h2>Inventory</h2></summary>
 									<table id="inventory" class="source-tableeditor" style="padding: 10px">
 										<thead>

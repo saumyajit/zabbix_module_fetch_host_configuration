@@ -306,7 +306,7 @@ class GetHostROView extends CAction {
     </div>
 
         <div class="section">
-    <h2>Tags</h2>
+    <h2>Host Tags</h2>
     <table class="kv-table">
         <tr><th>Tag</th><th>Value</th></tr>
         <?php foreach ($host['tags'] ?? [] as $tag): ?>
@@ -416,7 +416,7 @@ class GetHostROView extends CAction {
                 'inventory'          => $this->formatInventory($host['inventory'] ?? []),
                 'hostgroups'         => $host['hostgroups'] ?? [],
                 'interfaces'         => $host['interfaces'] ?? [],
-                                'tags'               => $host['tags'] ?? [],
+                'tags'               => $host['tags'] ?? [],
                 'parentTemplates'    => $host['parentTemplates'] ?? []
             ],
             'items' => array_map(function ($item) {

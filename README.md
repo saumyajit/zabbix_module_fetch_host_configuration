@@ -31,7 +31,8 @@ The module retrieves key host configuration items, including:
 - Host macros  
 - Inventory data  
 - Proxy assignment  
-- Description  
+- Description
+- Tags
 - Other host metadata
 
 This makes it useful for audits, compliance checks, debugging, and migration.

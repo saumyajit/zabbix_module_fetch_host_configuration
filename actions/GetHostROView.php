@@ -34,8 +34,8 @@ class GetHostROView extends CAction {
 
     /**
      * Main controller logic.
-	 ****** Re-map & reorder inventory for all export formats
-     */ 
+         ****** Re-map & reorder inventory for all export formats
+     */
     private function formatInventory(array $inv): array {
         $labels = [
             'type'       => 'Environment',
@@ -77,18 +77,19 @@ class GetHostROView extends CAction {
                 'selectInventory'   => ['type_full', 'name', 'os', 'os_short', 'contact'],
                 'selectHostGroups'  => ['groupid', 'name'],
                 'selectInterfaces'  => ['interfaceid', 'type', 'ip', 'dns', 'port'],
+                                'selectTags'            => ['tag', 'value', 'automatic'],
                 'selectParentTemplates' => ['templateid', 'name']
             ]);
 
             // Items.
-			$itemsInfo = API::Item()->get([
-				'hostids'   => $hostid,
-				'webitems'  => 1,   // include web scenario items like in your viewhost.php
-				'templated' => null,
-				'preservekeys' => 0,
-				'output'    => ['itemid', 'name', 'key_', 'delay', 'history', 'trends', 'status', 'state', 'description'],
-				'sortfield' => 'name'
-			]);
+                        $itemsInfo = API::Item()->get([
+                                'hostids'   => $hostid,
+                                'webitems'  => 1,   // include web scenario items like in your viewhost.php
+                                'templated' => null,
+                                'preservekeys' => 0,
+                                'output'    => ['itemid', 'name', 'key_', 'delay', 'history', 'trends', 'status', 'state', 'description'],
+                                'sortfield' => 'name'
+                        ]);
 
             // Triggers with expanded expression.
             $triggers = API::Trigger()->get([
@@ -129,7 +130,7 @@ class GetHostROView extends CAction {
         }
 
         $host = $hostInfo[0];
-		$inv = $host['inventory'] ?? [];
+                $inv = $host['inventory'] ?? [];
         $invFormatted = $this->formatInventory($inv);
 
         header('Content-Type: text/csv; charset=utf-8');
@@ -149,6 +150,21 @@ class GetHostROView extends CAction {
         fputcsv($fp, ['Maintenance status', $host['maintenance_status'] == 0 ? 'Not Under Maintenance' : 'Under Maintenance']);
         fputcsv($fp, ['Description', $host['description'] ?? '']);
         fputcsv($fp, []);
+
+                // Tags
+                fputcsv($fp, []);
+                fputcsv($fp, ['TAGS']);
+                fputcsv($fp, ['Tag', 'Value']);
+
+                if (!empty($host['tags'])) {
+                        foreach ($host['tags'] as $t) {
+                                fputcsv($fp, [$t['tag'], $t['value']]);
+                        }
+                } else {
+                        fputcsv($fp, ['(none)', '']);
+                }
+                fputcsv($fp, []);
+
 
         $inv = $host['inventory'] ?? [];
         fputcsv($fp, ['INVENTORY']);
@@ -273,6 +289,19 @@ class GetHostROView extends CAction {
         </table>
     </div>
 
+        <div class="section">
+    <h2>Tags</h2>
+    <table class="kv-table">
+        <tr><th>Tag</th><th>Value</th></tr>
+        <?php foreach ($host['tags'] ?? [] as $tag): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($tag['tag']); ?></td>
+                <td><?php echo htmlspecialchars($tag['value']); ?></td>
+            </tr>
+        <?php endforeach; ?>
+                </table>
+        </div>
+
     <div class="section">
         <h2>Items (<?php echo count($itemsInfo); ?>)</h2>
         <table>
@@ -366,6 +395,7 @@ class GetHostROView extends CAction {
                 'inventory'          => $this->formatInventory($host['inventory'] ?? []),
                 'hostgroups'         => $host['hostgroups'] ?? [],
                 'interfaces'         => $host['interfaces'] ?? [],
+                                'tags'               => $host['tags'] ?? [],
                 'parentTemplates'    => $host['parentTemplates'] ?? []
             ],
             'items' => array_map(function ($item) {
